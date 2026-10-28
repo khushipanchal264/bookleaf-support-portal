@@ -9,9 +9,11 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
 
-  outputFileTracingIncludes: {
-    "/*": ["./app/generated/prisma/**/*"],
-  },
+ 
+outputFileTracingIncludes: {
+  "/api/**/*": ["./app/generated/prisma/**/*"],
+  "/**/*": ["./app/generated/prisma/**/*"],
+},
 
   turbopack: {
     rules: {
