@@ -28,9 +28,9 @@ const priorityValues = [
 ] as const;
 
 export async function GET(request: Request) {
-  try {
-    const session = await getSession();
+  const session = await getSession();
 
+  try {
     if (!session) {
       return NextResponse.json(
         { success: false, message: "Please log in first." },

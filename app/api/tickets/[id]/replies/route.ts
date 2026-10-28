@@ -32,9 +32,9 @@ async function getAccessibleTicket(ticketId: string, userId: string, role: strin
 }
 
 export async function GET(_request: Request, context: RouteContext) {
-  try {
-    const session = await getSession();
+  const session = await getSession();
 
+  try {
     if (!session) {
       return NextResponse.json(
         { success: false, message: "Please log in first." },

@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
 
 export async function GET() {
-  try {
-    const user = await getSession();
+  const user = await getSession();
 
+  try {
     if (!user) {
       return NextResponse.json(
         {

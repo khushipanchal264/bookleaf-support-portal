@@ -10,9 +10,9 @@ const createTicketSchema = z.object({
 });
 
 export async function GET() {
-  try {
-    const session = await getSession();
+  const session = await getSession();
 
+  try {
     if (!session) {
       return NextResponse.json(
         { success: false, message: "Please log in first." },

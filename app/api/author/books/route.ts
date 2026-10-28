@@ -4,9 +4,9 @@ import { getSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
 export async function GET() {
-  try {
-    const session = await getSession();
+  const session = await getSession();
 
+  try {
     if (!session) {
       return NextResponse.json(
         {
