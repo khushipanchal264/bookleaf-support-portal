@@ -1,8 +1,17 @@
+import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../app/generated/prisma/client";
 import bcrypt from "bcryptjs";
 import sampleData from "../bookleaf_sample_data.json";
 
-const prisma = new PrismaClient();
+const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+  throw new Error("DATABASE_URL environment variable is missing.");
+}
+
+const prisma = new PrismaClient({
+  adapter: new PrismaPg({ connectionString }),
+});
 
 const DEFAULT_AUTHOR_PASSWORD =
   process.env.SEED_DEFAULT_PASSWORD || "BookLeaf@123";
